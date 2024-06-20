@@ -2,6 +2,7 @@ import pygame
 import random
 import os
 import neat
+import asyncio
 
 pygame.font.init()
 
@@ -223,7 +224,7 @@ def draw_window(win, birds, pipes, base, score, gen, pipe_ind):
     pygame.display.update()
 
 
-def eval_genomes(genomes, config):
+async def eval_genomes(genomes, config):
 
     global WIN, gen
     win = WIN
