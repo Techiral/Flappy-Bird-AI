@@ -1,9 +1,10 @@
 import pygame
 import random
 import os
+import time
 import neat
-
-pygame.font.init()
+import pickle
+pygame.font.init() #initialising fonts in pygame
 
 WIN_WIDTH = 600
 WIN_HEIGHT = 800
@@ -15,11 +16,10 @@ DRAW_LINES = False
 WIN = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 pygame.display.set_caption("Flappy Bird")
 
-# Loading images
-pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "pipe.png")).convert_alpha())
-bg_img = pygame.transform.scale(pygame.image.load(os.path.join("imgs", "bg.png")).convert_alpha(), (600, 900))
-bird_images = [pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", f"bird{x}.png"))) for x in range(1, 4)]
-base_img = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs", "base.png")).convert_alpha())
+pipe_img = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs","pipe.png")).convert_alpha())
+bg_img = pygame.transform.scale(pygame.image.load(os.path.join("imgs","bg.png")).convert_alpha(), (600, 900))
+bird_images = [pygame.transform.scale2x(pygame.image.load(os.path.join("imgs","bird" + str(x) + ".png"))) for x in range(1,4)]
+base_img = pygame.transform.scale2x(pygame.image.load(os.path.join("imgs","base.png")).convert_alpha())
 
 gen = 0
 
@@ -334,7 +334,7 @@ def run(config_file):
     winner = p.run(eval_genomes, 50)
 
     # show final stats
-    print("\nBest genome:\n{!s}'.format(winner)")
+    print('\nBest genome:\n{!s}'.format(winner))
 
 
 if __name__ == '__main__':
